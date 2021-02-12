@@ -6,5 +6,6 @@
 .bash_history
 .config/
 .rstudio*/
+.gitconfig
 packrat/
 Data/

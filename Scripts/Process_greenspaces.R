@@ -29,7 +29,7 @@ t_geo_r
 
 #####     split Greenspaces up into grids    ##### 
 st_crs(t_geo_r) <- 27700
-
+ 
 uk_map <- st_as_sf(getData("GADM", country = "GBR", level = 1))
 uk_map <- st_transform(uk_map, 27700)
 uk_grid <- st_make_grid(uk_map, cellsize = 100000, what = 'polygons', square=TRUE)

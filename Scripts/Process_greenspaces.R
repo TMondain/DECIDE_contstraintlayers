@@ -32,7 +32,7 @@ st_crs(t_geo_r) <- 27700
  
 uk_map <- st_as_sf(getData("GADM", country = "GBR", level = 1))
 uk_map <- st_transform(uk_map, 27700)
-uk_grid <- st_make_grid(uk_map, cellsize = 100000, what = 'polygons', square=TRUE)
+uk_grid <- st_make_grid(uk_map, cellsize = 25000, what = 'polygons', square=TRUE)
 grid_intersect <- apply(st_intersects(uk_grid, uk_map, sparse = FALSE), 1, any)
 
 plot(st_geometry(uk_map))
@@ -96,7 +96,7 @@ st_crs(t_acp_geo) <- 27700
 
 uk_map <- st_as_sf(getData("GADM", country = "GBR", level = 1))
 uk_map <- st_transform(uk_map, 27700)
-uk_grid <- st_make_grid(uk_map, cellsize = 100000, what = 'polygons', square=TRUE)
+uk_grid <- st_make_grid(uk_map, cellsize = 25000, what = 'polygons', square=TRUE)
 grid_intersect <- apply(st_intersects(uk_grid, uk_map, sparse = FALSE), 1, any)
 
 plot(st_geometry(uk_map))
@@ -120,16 +120,16 @@ length(simp_grid_uk)
 t_acp_geo
 
 
-system.time(
-  for(i in 1:length(simp_grid_uk)){
-    print(i)
-    
-    grid_sub <- t_acp_geo[st_intersects(t_acp_geo, simp_grid_uk[[i]], sparse = F),]
-    
-    st_write(grid_sub, dsn = paste0('Data/raw_data/OS_greenspaces/OS Open Greenspace (ESRI Shape File) GB/data/gridded_accesspoint_data/accspnt_gridnumber_',i,'.shp'),
-             driver = "ESRI Shapefile", delete_layer = T)
-  }
-)
+# system.time(
+#   for(i in 1:length(simp_grid_uk)){
+#     print(i)
+#     
+#     grid_sub <- t_acp_geo[st_intersects(t_acp_geo, simp_grid_uk[[i]], sparse = F),]
+#     
+#     st_write(grid_sub, dsn = paste0('Data/raw_data/OS_greenspaces/OS Open Greenspace (ESRI Shape File) GB/data/gridded_accesspoint_data/accspnt_gridnumber_',i,'.shp'),
+#              driver = "ESRI Shapefile", delete_layer = T)
+#   }
+# )
 
 
 

@@ -11,7 +11,7 @@
 
 library(sf)
 library(dplyr)
-library(spDataLarge)
+# library(spDataLarge)
 library(stplanr)      # geographic transport data package
 library(tmap)         # visualization package (see Chapter 8)
 library(osrm)         # routing package

@@ -123,9 +123,9 @@ t_acp_geo
 # system.time(
 #   for(i in 1:length(simp_grid_uk)){
 #     print(i)
-#     
+# 
 #     grid_sub <- t_acp_geo[st_intersects(t_acp_geo, simp_grid_uk[[i]], sparse = F),]
-#     
+# 
 #     st_write(grid_sub, dsn = paste0('Data/raw_data/OS_greenspaces/OS Open Greenspace (ESRI Shape File) GB/data/gridded_accesspoint_data/accspnt_gridnumber_',i,'.shp'),
 #              driver = "ESRI Shapefile", delete_layer = T)
 #   }

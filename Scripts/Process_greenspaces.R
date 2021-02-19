@@ -62,8 +62,12 @@ system.time(
 
     grid_sub <- t_geo_r[st_intersects(t_geo_r, simp_grid_uk[[i]], sparse = F),]
 
-    st_write(grid_sub, dsn = paste0('Data/raw_data/OS_greenspaces/OS Open Greenspace (ESRI Shape File) GB/data/gridded_greenspace_data/grnspc_gridnumber_',i,'.shp'),
-             driver = "ESRI Shapefile", delete_layer = T)
+    # st_write(grid_sub, dsn = paste0('Data/raw_data/OS_greenspaces/OS Open Greenspace (ESRI Shape File) GB/data/gridded_greenspace_data/grnspc_gridnumber_',i,'.shp'),
+    #          driver = "ESRI Shapefile", delete_layer = T)
+    
+    saveRDS(grid_sub, 
+            file = paste0('Data/raw_data/OS_greenspaces/OS Open Greenspace (ESRI Shape File) GB/data/gridded_greenspace_data/grnspc_gridnumber_',i,'.rds')) 
+    
   }
 )
 
@@ -120,16 +124,20 @@ length(simp_grid_uk)
 t_acp_geo
 
 
-# system.time(
-#   for(i in 1:length(simp_grid_uk)){
-#     print(i)
-# 
-#     grid_sub <- t_acp_geo[st_intersects(t_acp_geo, simp_grid_uk[[i]], sparse = F),]
-# 
-#     st_write(grid_sub, dsn = paste0('Data/raw_data/OS_greenspaces/OS Open Greenspace (ESRI Shape File) GB/data/gridded_accesspoint_data/accspnt_gridnumber_',i,'.shp'),
-#              driver = "ESRI Shapefile", delete_layer = T)
-#   }
-# )
+system.time(
+  for(i in 1:length(simp_grid_uk)){
+    print(i)
+
+    grid_sub <- t_acp_geo[st_intersects(t_acp_geo, simp_grid_uk[[i]], sparse = F),]
+
+    # st_write(grid_sub, dsn = paste0('Data/raw_data/OS_greenspaces/OS Open Greenspace (ESRI Shape File) GB/data/gridded_accesspoint_data/accspnt_gridnumber_',i,'.shp'),
+    #          driver = "ESRI Shapefile", delete_layer = T)
+    
+    saveRDS(grid_sub, 
+            file = paste0('Data/raw_data/OS_greenspaces/OS Open Greenspace (ESRI Shape File) GB/data/gridded_accesspoint_data/accspnt_gridnumber_',i,'.rds')) 
+    
+  }
+)
 
 
 
